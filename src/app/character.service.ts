@@ -1,59 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class CharacterService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
   getCharacters() {
-    return [
-      {
-        id: 1,
-        name: 'Rick Sanchez',
-        status: 'Alive',
-        species: 'Human',
-        type: '',
-        gender: 'Male',
-        origin: {
-          name: 'Earth',
-          url: 'https://rickandmortyapi.com/api/location/1',
-        },
-        location: {
-          name: 'Earth',
-          url: 'https://rickandmortyapi.com/api/location/20',
-        },
-        image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-        episode: [
-          'https://rickandmortyapi.com/api/episode/1',
-          'https://rickandmortyapi.com/api/episode/2',
-          // ...
-        ],
-        url: 'https://rickandmortyapi.com/api/character/1',
-        created: '2017-11-04T18:48:46.250Z',
-      },
-      {
-        id: 2,
-        name: 'Morty Smith',
-        status: 'Alive',
-        species: 'Human',
-        type: '',
-        gender: 'Male',
-        origin: {
-          name: 'Earth',
-          url: 'https://rickandmortyapi.com/api/location/1',
-        },
-        location: {
-          name: 'Earth',
-          url: 'https://rickandmortyapi.com/api/location/20',
-        },
-        image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-        episode: [
-          'https://rickandmortyapi.com/api/episode/1',
-          'https://rickandmortyapi.com/api/episode/2',
-        ],
-        url: 'https://rickandmortyapi.com/api/character/1',
-        created: '2017-11-04T18:48:46.250Z',
-      },
-    ];
+    let url = "https://rickandmortyapi.com/api/character";
+    let data = this.http.get(url);
+    return data;
   }
 }
