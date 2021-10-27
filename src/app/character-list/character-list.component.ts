@@ -38,21 +38,30 @@ export class CharacterListComponent implements OnInit {
   }
 
   nextPage() {
-    // alert("works");
-    this.page++;
+    if (this.page < this.charactersInfo.pages) {
+      // alert("works");
+      this.page++;
+    }
 
     console.log("Next page:");
     console.log(this.page);
 
     this.getCharacters();
   }
+
   previousPage() {
-    // alert("works");
     if (this.page > 1) {
       this.page--;
-      this.getCharacters();
-    } else {
-      return;
     }
+    this.getCharacters();
   }
+  // previousPage() {
+  //   // alert("works");
+  //   if (this.page > 1) {
+  //     this.page--;
+  //     this.getCharacters();
+  //   } else {
+  //     return;
+  //   }
+  // }
 }

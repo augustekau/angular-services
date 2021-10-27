@@ -3,7 +3,11 @@
     <h1 class="text-center mt-5 mb-5">Rick And Morty Characters</h1>
   </div>
   <div class="row">
-    <div class="col-sm-12 d-flex justify-content-end">
+    <div class="col-sm-6">
+      <p>Total Characters: {{ charactersInfo.count }}</p>
+      <p>Current Page: {{ page }} / {{ charactersInfo.pages }}</p>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-end">
       <button class="btn mb-5 me-3 previousPage" (click)="previousPage()">
         Previous Page
       </button>
