@@ -1,44 +1,33 @@
-<p>
-  Duomenys naudojami iš:
-
-  <a href="https://rickandmortyapi.com/api/character" target="_blank">
-    Rickandmortyapi.com
-  </a>
-</p>
-
-<div class="container">
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center mt-5 mb-5">Rick And Morty Characters</h1>
+  </div>
   <div class="row">
-    <div class="col-sm-12">
-      <h1 class="text-center mt-5 mb-5">Rick And Morty Characters</h1>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 d-flex justify-content-end">
-        <button class="btn mb-5 me-3 previousPage" (click)="previousPage()">
-          Previous Page
-        </button>
-        <button class="btn mb-5 nextPage" (click)="nextPage()">
-          Next Page
-        </button>
-      </div>
+    <div class="col-sm-12 d-flex justify-content-end">
+      <button class="btn mb-5 me-3 previousPage" (click)="previousPage()">
+        Previous Page
+      </button>
+      <button class="btn mb-5 nextPage" (click)="nextPage()">Next Page</button>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-sm-3" *ngFor="let character of characters">
-      <div class="card mb-3">
-        <img
-          [src]="character.image"
-          [alt]="character.name"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ character.name }}</h5>
-          <p class="card-text">
-            {{ character.species }} <br />
-            {{ character.status }}
-          </p>
-        </div>
+<div class="row">
+  <div class="col-sm-3" *ngFor="let character of characters">
+    <div class="card mb-3">
+      <img
+        [src]="character.image"
+        [alt]="character.name"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ character.name }}</h5>
+        <p class="card-text">
+          {{ character.species }} <br />
+          {{ character.status }}
+        </p>
+        <button class="btn">More details</button>
       </div>
     </div>
   </div>
