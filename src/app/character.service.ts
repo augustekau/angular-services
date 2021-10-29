@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
   providedIn: "root",
 })
 export class CharacterService {
+  private url: string = "https://rickandmortyapi.com/api/character";
   constructor(private http: HttpClient) {}
   //klaustukas reiskia kad sis parametras nera privalomas
 
@@ -17,7 +18,7 @@ export class CharacterService {
 
     // Dokumentacija kokie duomenys grazinami:
     // https://rickandmortyapi.com/documentation/#character-schema
-    let url: string = "https://rickandmortyapi.com/api/character";
+    // let url: string = "https://rickandmortyapi.com/api/character";
 
     // // Patikriname ar perduotas page parametras ir perduodame ji i uzklausos URL
     // if (page) {
@@ -30,8 +31,13 @@ export class CharacterService {
     let params = new HttpParams();
 
     params = params.append("page", page);
-    console.log(url);
-    let data = this.http.get(url, { params });
+    // console.log(url);
+    let data = this.http.get(this.url, { params });
+    return data;
+  }
+  getCharacter(id: string | null) {
+    let data = this.http.get(this.url + "/" + id);
+
     return data;
   }
 }

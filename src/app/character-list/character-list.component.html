@@ -31,7 +31,9 @@
           {{ character.species }} <br />
           {{ character.status }}
         </p>
-        <button class="btn">More details</button>
+        <button class="btn" [routerLink]="['/character', character.id]">
+          More details
+        </button>
       </div>
     </div>
   </div>
