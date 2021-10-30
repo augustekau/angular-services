@@ -19,7 +19,7 @@ export class LocationListComponent implements OnInit {
   }
   getLocations() {
     this._locationService
-      .getEpisodes(this.page)
+      .getLocations(this.page)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
       .subscribe((data: any) => {

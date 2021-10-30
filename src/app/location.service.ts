@@ -8,7 +8,7 @@ export class LocationService {
   private url: string = "https://rickandmortyapi.com/api/location";
   constructor(private http: HttpClient) {}
 
-  getEpisodes(page: number) {
+  getLocations(page: number) {
     let params = new HttpParams();
 
     params = params.append("page", page);
