@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center mt-5 mb-5">Location information</h1>
+  </div>
+</div>
+<div class="row f-fex justify-content-center" *ngIf="location">
+  <div class="col-sm-8 d-flex location-info">
+    <div class="col-sm-4">
+      <div class="card mb-3 mt-3">
+        <img
+          src="https://www.ociostock.com/productos/imagenes/img_205749_e1a699da455d93a1256592383518a8ef_1.jpg"
+          [alt]="location.name"
+          class="card-img-top episode-img"
+          alt="..."
+        />
+      </div>
+    </div>
+    <div class="col-sm-8 mb-3 mt-3 ms-3">
+      <h2>
+        {{ location.name }}
+      </h2>
+      <h5>Type: {{ location.type }}</h5>
+      <h5>Dimention: {{ location.dimension }}</h5>
+      <h5>Residents: {{ location.residents.length }}</h5>
+
+      <button class="btn mt-5 me-4 float-end" [routerLink]="['/locations']">
+        Go Back
+      </button>
+    </div>
+  </div>
+</div>

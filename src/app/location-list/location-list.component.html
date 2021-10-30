@@ -22,7 +22,12 @@
       <div class="card-body">
         <h3 class="card-title text-center">{{ location.name }}</h3>
         <!-- <h5 class="text-center">{{ episode.episode }}</h5> -->
-        <button class="btn float-end mt-4">More details</button>
+        <button
+          class="btn float-end mt-4"
+          [routerLink]="['/locations', location.id]"
+        >
+          More details
+        </button>
       </div>
     </div>
   </div>

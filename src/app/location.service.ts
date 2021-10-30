@@ -16,4 +16,9 @@ export class LocationService {
     let data = this.http.get(this.url, { params });
     return data;
   }
+  getLocation(id: string | null) {
+    let data = this.http.get(this.url + "/" + id);
+
+    return data;
+  }
 }

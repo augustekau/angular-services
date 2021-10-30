@@ -4,6 +4,7 @@ import { CharacterDetailsComponent } from "./character-details/character-details
 import { CharacterListComponent } from "./character-list/character-list.component";
 import { EpisodeDetailsComponent } from "./episode-details/episode-details.component";
 import { EpisodeListComponent } from "./episode-list/episode-list.component";
+import { LocationDetailsComponent } from "./location-details/location-details.component";
 import { LocationListComponent } from "./location-list/location-list.component";
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "episodes", component: EpisodeListComponent },
   { path: "episodes/:id", component: EpisodeDetailsComponent },
   { path: "locations", component: LocationListComponent },
+  { path: "locations/:id", component: LocationDetailsComponent },
 ];
 
 @NgModule({
