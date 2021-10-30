@@ -1,1 +1,28 @@
-<p>episode-list works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center mt-5 mb-5">Rick And Morty Episodes</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Total Episodes: {{ episodesInfo.count }}</p>
+      <!-- <p>Current Page: {{ page }} / {{ charactersInfo.pages }}</p> -->
+    </div>
+    <!-- <div class="col-sm-6 d-flex justify-content-end">
+      <button class="btn mb-5 me-3 previousPage" (click)="previousPage()">
+        Previous Page
+      </button>
+      <button class="btn mb-5 nextPage" (click)="nextPage()">Next Page</button>
+    </div> -->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-3" *ngFor="let episode of episodes">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h3 class="card-title text-center">{{ episode.name }}</h3>
+        <h5 class="text-center">{{ episode.episode }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
