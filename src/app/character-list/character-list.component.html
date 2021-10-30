@@ -26,12 +26,12 @@
         alt="..."
       />
       <div class="card-body">
-        <h5 class="card-title">{{ character.name }}</h5>
-        <p class="card-text">
-          {{ character.species }} <br />
-          {{ character.status }}
-        </p>
-        <button class="btn" [routerLink]="['/character', character.id]">
+        <h3 class="card-title text-center">{{ character.name }}</h3>
+
+        <button
+          class="btn float-end mt-4"
+          [routerLink]="['/character', character.id]"
+        >
           More details
         </button>
       </div>

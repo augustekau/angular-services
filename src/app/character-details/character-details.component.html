@@ -1,1 +1,31 @@
-<p>character-details works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center mt-5 mb-5">Character information</h1>
+  </div>
+</div>
+<div class="row f-fex justify-content-center" *ngIf="character">
+  <div class="col-sm-8 d-flex character-info">
+    <div class="col-sm-4">
+      <div class="card mb-3 mt-3">
+        <img
+          [src]="character.image"
+          [alt]="character.name"
+          class="card-img-top character-img"
+          alt="..."
+        />
+      </div>
+    </div>
+    <div class="col-sm-8 mb-3 mt-3 ms-3">
+      <h2>
+        {{ character.name }}
+      </h2>
+      <h5>Species: {{ character.species }}</h5>
+      <h5>Gender: {{ character.gender }}</h5>
+      <h5>Status: {{ character.status }}</h5>
+      <h5>Episodes: {{ character.episode.length }}</h5>
+      <h5>Origin: {{ character.origin.name }}</h5>
+      <h5>Location: {{ character.location.name }}</h5>
+      <button class="btn me-4 float-end" [routerLink]="['/']">Go Back</button>
+    </div>
+  </div>
+</div>
