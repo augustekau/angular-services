@@ -8,13 +8,15 @@ export class EpisodeService {
   private url: string = "https://rickandmortyapi.com/api/episode";
   constructor(private http: HttpClient) {}
 
-  getEpisodes() {
+  getEpisodes(page: number) {
     // console.log("Page parametras");
     // console.log(page);
 
     let params = new HttpParams();
 
-    let data = this.http.get(this.url);
+    params = params.append("page", page);
+
+    let data = this.http.get(this.url, { params });
     return data;
   }
 }

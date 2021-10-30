@@ -10,6 +10,8 @@ export class EpisodeListComponent implements OnInit {
   public episodes: any = [];
   public episodesInfo: any = {};
 
+  public page: number = 1;
+
   constructor(private _episodeService: EpisodeService) {}
 
   ngOnInit(): void {
@@ -17,7 +19,7 @@ export class EpisodeListComponent implements OnInit {
   }
   getEpisodes() {
     this._episodeService
-      .getEpisodes()
+      .getEpisodes(this.page)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
       .subscribe((data: any) => {
@@ -28,5 +30,20 @@ export class EpisodeListComponent implements OnInit {
         this.episodesInfo = data.info;
         console.log(data);
       });
+  }
+  nextPage() {
+    if (this.page < this.episodesInfo.pages) {
+      this.page++;
+    }
+    // console.log("Next page:");
+    // console.log(this.page);
+    this.getEpisodes();
+  }
+
+  previousPage() {
+    if (this.page > 1) {
+      this.page--;
+    }
+    this.getEpisodes();
   }
 }
