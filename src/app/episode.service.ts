@@ -19,4 +19,9 @@ export class EpisodeService {
     let data = this.http.get(this.url, { params });
     return data;
   }
+  getEpisode(id: string | null) {
+    let data = this.http.get(this.url + "/" + id);
+
+    return data;
+  }
 }

@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { LocationListComponent } from './location-list/location-list.component';
+import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LocationListComponent } from './location-list/location-list.component';
     HeaderComponent,
     EpisodeListComponent,
     LocationListComponent,
+    EpisodeDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule],
   providers: [CharacterService],
