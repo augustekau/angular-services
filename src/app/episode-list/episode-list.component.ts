@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Episode } from "../episode";
 import { EpisodeService } from "../episode.service";
 
 @Component({
@@ -7,7 +8,7 @@ import { EpisodeService } from "../episode.service";
   styleUrls: ["./episode-list.component.scss"],
 })
 export class EpisodeListComponent implements OnInit {
-  public episodes: any = [];
+  public episodes?: Episode[];
   public episodesInfo: any = {};
 
   public page: number = 1;

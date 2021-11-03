@@ -24,4 +24,9 @@ export class EpisodeService {
 
     return data;
   }
+  getEpisodeByUrl(url: string) {
+    let data = this.http.get(url);
+
+    return data;
+  }
 }

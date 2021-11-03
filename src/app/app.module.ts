@@ -28,6 +28,8 @@ import { EpisodeListComponent } from './episode-list/episode-list.component';
 import { LocationListComponent } from './location-list/location-list.component';
 import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
 import { LocationDetailsComponent } from './location-details/location-details.component';
+import { EpisodeCardComponent } from './episode-card/episode-card.component';
+import { CharacterCardComponent } from './character-card/character-card.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { LocationDetailsComponent } from './location-details/location-details.co
     LocationListComponent,
     EpisodeDetailsComponent,
     LocationDetailsComponent,
+    EpisodeCardComponent,
+    CharacterCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule],
   providers: [CharacterService],
