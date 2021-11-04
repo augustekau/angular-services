@@ -30,3 +30,9 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <h3 class="mt-5 mb-5">Episode characters</h3>
+  <div class="col-sm-3" *ngFor="let character of characters">
+    <app-character-card [character]="character"></app-character-card>
+  </div>
+</div>
