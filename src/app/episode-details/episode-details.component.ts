@@ -16,6 +16,8 @@ export class EpisodeDetailsComponent implements OnInit {
 
   public characters: [] = [];
 
+  public searchEpisode = "Enter the name of episode";
+
   private charactersIds: any = [];
 
   constructor(

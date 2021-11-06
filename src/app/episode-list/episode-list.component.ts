@@ -13,14 +13,25 @@ export class EpisodeListComponent implements OnInit {
 
   public page: number = 1;
 
+  public searchOptions = {
+    name: "",
+  };
+
   constructor(private _episodeService: EpisodeService) {}
 
   ngOnInit(): void {
     this.getEpisodes();
   }
-  getEpisodes() {
+  filterEpisodes(name: string) {
+    // alert(
+    //   "parent component suzinojo apie on form submit eventa is child componento"
+    // );
+    this.searchOptions.name = name;
+    this.getEpisodes();
+  }
+  getEpisodes(name?: string) {
     this._episodeService
-      .getEpisodes(this.page)
+      .getEpisodes(this.page, this.searchOptions.name)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
       .subscribe((data: any) => {
