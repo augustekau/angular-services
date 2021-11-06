@@ -16,6 +16,8 @@ export class LocationListComponent implements OnInit {
     name: "",
   };
 
+  public errors: any;
+
   constructor(private _locationService: LocationService) {}
 
   ngOnInit(): void {
@@ -34,15 +36,31 @@ export class LocationListComponent implements OnInit {
       .getLocations(this.page, this.searchOptions.name)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
-      .subscribe((data: any) => {
-        // Gautus duomenis priskiriame komponento kintamajam
-        // Characters kintamajam, priskiriame duomenis is characterService getCharaters funkcijos
+      .subscribe(
+        (data: any) => {
+          // Gautus duomenis priskiriame komponento kintamajam
+          // Characters kintamajam, priskiriame duomenis is characterService getCharaters funkcijos
 
-        this.locations = data.results;
-        this.locationsInfo = data.info;
-        console.log(data);
-      });
+          this.locations = data.results;
+          this.locationsInfo = data.info;
+          console.log(data);
+        },
+        (error: any) => {
+          if (error.status == "404") {
+            this.errors = error;
+
+            // Nustatome characters masyva i tuscia masyva, nes nebuvo rasta jokiu veikeju
+            this.locations = [];
+            // Taip pat pakeiciame charactersInfo objekto reiksmes pagal klaidos koda
+            this.locationsInfo.count = 0;
+            // this.charactersInfo.pages = 0;
+          } else {
+            alert("Something went wrong");
+          }
+        }
+      );
   }
+
   nextPage() {
     if (this.page < this.locationsInfo.pages) {
       this.page++;

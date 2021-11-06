@@ -14,8 +14,9 @@ export class CharacterListComponent implements OnInit {
 
   public searchOptions = {
     name: "",
-    status: "",
   };
+
+  public errors: any;
 
   constructor(private _characterService: CharacterService) {}
 
@@ -36,18 +37,38 @@ export class CharacterListComponent implements OnInit {
       .getCharacters(this.page, this.searchOptions.name)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
-      .subscribe((data: any) => {
-        // Gautus duomenis priskiriame komponento kintamajam
-        // Characters kintamajam, priskiriame duomenis is characterService getCharaters funkcijos
+      .subscribe(
+        (data: any) => {
+          // Gautus duomenis priskiriame komponento kintamajam
+          // Characters kintamajam, priskiriame duomenis is characterService getCharaters funkcijos
 
-        this.characters = data.results;
-        this.charactersInfo = data.info;
-        console.log(data);
-        /*
+          this.characters = data.results;
+          this.charactersInfo = data.info;
+          console.log(data);
+          /*
           Dokumentacija kokie duomenys grazinami:
           https://rickandmortyapi.com/documentation/#character-schema
           */
-      });
+        },
+        (error: any) => {
+          if (error.status == "404") {
+            // alert("nothing found");
+            // console.log(error);
+
+            // Priskiriame error objekta savo komponento errors masyvui,
+            // kad galetume atvaizduoti klaidos pranesima template dalyje
+            this.errors = error;
+
+            // Nustatome characters masyva i tuscia masyva, nes nebuvo rasta jokiu veikeju
+            this.characters = [];
+            // Taip pat pakeiciame charactersInfo objekto reiksmes pagal klaidos koda
+            this.charactersInfo.count = 0;
+            // this.charactersInfo.pages = 0;
+          } else {
+            alert("Something went wrong");
+          }
+        }
+      );
   }
 
   nextPage() {
@@ -68,6 +89,7 @@ export class CharacterListComponent implements OnInit {
     }
     this.getCharacters();
   }
+
   // previousPage() {
   //   // alert("works");
   //   if (this.page > 1) {

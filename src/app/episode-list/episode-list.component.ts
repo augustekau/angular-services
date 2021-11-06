@@ -17,6 +17,8 @@ export class EpisodeListComponent implements OnInit {
     name: "",
   };
 
+  public errors: any;
+
   constructor(private _episodeService: EpisodeService) {}
 
   ngOnInit(): void {
@@ -34,15 +36,36 @@ export class EpisodeListComponent implements OnInit {
       .getEpisodes(this.page, this.searchOptions.name)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
-      .subscribe((data: any) => {
-        // Gautus duomenis priskiriame komponento kintamajam
-        // Characters kintamajam, priskiriame duomenis is characterService getCharaters funkcijos
+      .subscribe(
+        (data: any) => {
+          // Gautus duomenis priskiriame komponento kintamajam
+          // Characters kintamajam, priskiriame duomenis is characterService getCharaters funkcijos
 
-        this.episodes = data.results;
-        this.episodesInfo = data.info;
-        console.log(data);
-      });
+          this.episodes = data.results;
+          this.episodesInfo = data.info;
+          console.log(data);
+        },
+        (error: any) => {
+          if (error.status == "404") {
+            // alert("nothing found");
+            // console.log(error);
+
+            // Priskiriame error objekta savo komponento errors masyvui,
+            // kad galetume atvaizduoti klaidos pranesima template dalyje
+            this.errors = error;
+
+            // Nustatome characters masyva i tuscia masyva, nes nebuvo rasta jokiu veikeju
+            this.episodes = [];
+            // Taip pat pakeiciame charactersInfo objekto reiksmes pagal klaidos koda
+            this.episodesInfo.count = 0;
+            // this.charactersInfo.pages = 0;
+          } else {
+            alert("Something went wrong");
+          }
+        }
+      );
   }
+
   nextPage() {
     if (this.page < this.episodesInfo.pages) {
       this.page++;

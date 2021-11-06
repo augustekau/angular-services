@@ -6,7 +6,7 @@
     <!-- (onFormSubmit)="filterCharacters($event)" -->
     <app-search-form (onFormSubmit)="filterLocations($event)"></app-search-form>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="locationsInfo.count > 0">
     <div class="col-sm-6">
       <p>Total Locations: {{ locationsInfo.count }}</p>
       <p>Current Page: {{ page }} / {{ locationsInfo.pages }}</p>
@@ -17,6 +17,17 @@
       </button>
       <button class="btn mb-5 nextPage" (click)="nextPage()">Next Page</button>
     </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="locationsInfo.count == 0">
+  <h2>Nothing found.</h2>
+  <p>
+    You have searched for: <strong>{{ searchOptions.name }}</strong
+    >. Try something else
+  </p>
+  <div class="col-sm-2">
+    <button class="btn mb-5 me-3">Go back</button>
   </div>
 </div>
 
