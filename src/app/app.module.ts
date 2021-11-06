@@ -30,6 +30,7 @@ import { EpisodeDetailsComponent } from './episode-details/episode-details.compo
 import { LocationDetailsComponent } from './location-details/location-details.component';
 import { EpisodeCardComponent } from './episode-card/episode-card.component';
 import { CharacterCardComponent } from './character-card/character-card.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CharacterCardComponent } from './character-card/character-card.componen
     LocationDetailsComponent,
     EpisodeCardComponent,
     CharacterCardComponent,
+    SearchFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MdbAccordionModule, MdbCarouselModule, MdbCheckboxModule, MdbCollapseModule, MdbDropdownModule, MdbFormsModule, MdbModalModule, MdbPopoverModule, MdbRadioModule, MdbRangeModule, MdbRippleModule, MdbScrollspyModule, MdbTabsModule, MdbTooltipModule, MdbValidationModule, BrowserAnimationsModule],
   providers: [CharacterService],
