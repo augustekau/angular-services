@@ -2,7 +2,12 @@
   <div class="col-sm-8">
     <h1 class="text-center mt-5 mb-5">Rick And Morty Characters</h1>
   </div>
-  <div class="col-sm-4 mt-5 mb-5"><app-search-form></app-search-form></div>
+  <div class="col-sm-4 mt-5 mb-5">
+    <!-- (onFormSubmit)="filterCharacters($event)" -->
+    <app-search-form
+      (onFormSubmit)="filterCharacters($event)"
+    ></app-search-form>
+  </div>
   <div class="row">
     <div class="col-sm-6">
       <p>Total Characters: {{ charactersInfo.count }}</p>

@@ -18,6 +18,12 @@ export class CharacterListComponent implements OnInit {
     this.getCharacters();
   }
 
+  filterCharacters(name?: string) {
+    alert(
+      "Character List Komponentas Suzinojo apie onForm Submit Event'a is SearchForm komponento "
+    );
+  }
+
   getCharacters() {
     this._characterService
       .getCharacters(this.page)

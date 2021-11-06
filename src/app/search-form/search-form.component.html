@@ -1,9 +1,28 @@
-<form class="d-flex">
+<!-- (ngSubmit) - Event'as kai pateikiama forma
+(ngSubmit)="searchFromSubmit()"
+(ngSubmit) - event pavadinimas - pvz (click) arba (hover)
+searchFromSubmit() - funkcijos pavadinimas , komponente, kuri bus kvieciama, pateikus forma
+-->
+
+<form class="d-flex" (ngSubmit)="searchFormSubmit()">
+  <!-- Norint naudoti [(ngModel)] - butina importuoti
+    i app.module.ts  - FormsModule
+    import { FormsModule } from '@angular/forms';
+      ir prideti prie:
+    imports: [
+    ....,
+    FormsModule
+  ],
+    -->
+
   <input
     class="form-control me-2"
     type="search"
     placeholder="Enter Character name"
     aria-label="Search"
+    name="searchString"
+    [(ngModel)]="searchString"
   />
-  <button class="btn btn-outline-success" type="submit">Search</button>
+  <input class="btn btn-outline-success" type="submit" value="Search" />
 </form>
+<div>You are searching for: {{ searchString }}</div>
