@@ -8,10 +8,14 @@ export class LocationService {
   private url: string = "https://rickandmortyapi.com/api/location";
   constructor(private http: HttpClient) {}
 
-  getLocations(page: number) {
+  getLocations(page: number, name?: string) {
     let params = new HttpParams();
 
     params = params.append("page", page);
+
+    if (name) {
+      params = params.append("name", name);
+    }
 
     let data = this.http.get(this.url, { params });
     return data;

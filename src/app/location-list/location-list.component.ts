@@ -12,14 +12,26 @@ export class LocationListComponent implements OnInit {
 
   public page: number = 1;
 
+  public searchOptions = {
+    name: "",
+  };
+
   constructor(private _locationService: LocationService) {}
 
   ngOnInit(): void {
     this.getLocations();
   }
-  getLocations() {
+
+  filterLocations(name: string) {
+    // alert(
+    //   "parent component suzinojo apie on form submit eventa is child componento"
+    // );
+    this.searchOptions.name = name;
+    this.getLocations();
+  }
+  getLocations(name?: string) {
     this._locationService
-      .getLocations(this.page)
+      .getLocations(this.page, this.searchOptions.name)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
       .subscribe((data: any) => {
