@@ -9,7 +9,7 @@ export class CharacterService {
   constructor(private http: HttpClient) {}
   //klaustukas reiskia kad sis parametras nera privalomas
 
-  getCharacters(page: number) {
+  getCharacters(page: number, name?: string) {
     console.log("Page parametras");
     console.log(page);
     // Lokalus kintamasis, pasiekiamas tik sios funkcijos viduje
@@ -31,6 +31,12 @@ export class CharacterService {
     let params = new HttpParams();
 
     params = params.append("page", page);
+
+    // Jei i funkcija perduota name reiksme, prideti paieskos parametra prie uzklausos
+    // API Refference: https://rickandmortyapi.com/documentation/#character-schema
+    if (name) {
+      params = params.append("name", name);
+    }
     // console.log(url);
     let data = this.http.get(this.url, { params });
     return data;

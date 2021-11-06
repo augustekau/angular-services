@@ -12,21 +12,28 @@ export class CharacterListComponent implements OnInit {
 
   public page: number = 1;
 
+  public searchOptions = {
+    name: "",
+    status: "",
+  };
+
   constructor(private _characterService: CharacterService) {}
 
   ngOnInit(): void {
     this.getCharacters();
   }
 
-  filterCharacters(name?: string) {
-    alert(
-      "Character List Komponentas Suzinojo apie onForm Submit Event'a is SearchForm komponento "
-    );
+  filterCharacters(name: string) {
+    // alert(
+    //   "Character List Komponentas Suzinojo apie onForm Submit Event'a is SearchForm komponento "
+    // );
+    this.searchOptions.name = name;
+    this.getCharacters();
   }
 
-  getCharacters() {
+  getCharacters(name?: string) {
     this._characterService
-      .getCharacters(this.page)
+      .getCharacters(this.page, this.searchOptions.name)
       // Subscribe funkcija naudojama dirbant su Observable tipo objektais (Angular httpClient visada grazina Observabile tipa)
       // data - kintamasis su grazintais duomenimis is musu uzklausos
       .subscribe((data: any) => {
